@@ -36,6 +36,12 @@ namespace ConsoleCalculator
             {
                 WriteLine(value: $"Sorry something went wrong. {ex}");
             }
+            finally
+            {
+                WriteLine("...finally...");
+                // Calling dispose on objects that implement the IDisposable interface
+                // to make sure you clean up any unmanaged resources.
+            }
 
             WriteLine("\nPress enter to exit");
             ReadLine();
