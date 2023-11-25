@@ -11,17 +11,10 @@ namespace ConsoleCalculator
 
         public int Calculate(int number1, int number2, string operation)
         {
+        
+            ArgumentNullException.ThrowIfNull(nameof(operation));
 
-            // C# 7 introduced throw an exception from within an expression.
-
-            string nonNullOperation =
-                operation ?? throw new ArgumentNullException(nameof(operation)); // null check
-            
-            // (??) --> null coalescing operator
-
-            
-
-            if (nonNullOperation == "/")
+            if (operation == "/")
             {
                 return Divide(number: number1, divisor: number2);
             }
