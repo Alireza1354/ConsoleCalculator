@@ -19,8 +19,18 @@ namespace ConsoleCalculator
             try
             {
                 var calculator = new Calculator();
-                var result = calculator.Calculate(number1, number2, null!); // null!--> null-forgiving operator(to remove the compiler warning)
+                var result = calculator.Calculate(number1, number2, operation);
                 DisplayResult(result);
+            }
+            catch (ArgumentNullException ex)
+            {
+                // Log.Error(ex)
+                WriteLine($"Operation was not provided. {ex}");
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                // Log.Error(ex)
+                WriteLine($"Operation is not supported. {ex}");
             }
             catch (Exception ex)
             {
