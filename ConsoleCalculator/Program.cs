@@ -19,7 +19,7 @@ namespace ConsoleCalculator
             try
             {
                 var calculator = new Calculator();
-                var result = calculator.Calculate(number1, number2, operation);
+                var result = calculator.Calculate(number1, number2, null!); // null!--> null-forgiving operator(to remove the compiler warning)
                 DisplayResult(result);
             }
             catch (Exception ex)
