@@ -7,6 +7,13 @@ namespace ConsoleCalculator
     {
         static void Main(string[] args)
         {
+
+            AppDomain currentAppDomain = AppDomain.CurrentDomain;
+            // This event will fire when there's an unhandled exception that's been thrown.
+            currentAppDomain.UnhandledException += new UnhandledExceptionEventHandler(HandleException);
+            // hold down Ctrl+period and hit Enter to generate this method.
+
+
             WriteLine("Enter first number");
             int number1 = int.Parse(ReadLine()!);
 
@@ -53,6 +60,12 @@ namespace ConsoleCalculator
 
 
             static void DisplayResult(int result) => WriteLine($"Result is: {result}");
+        }
+
+        private static void HandleException(object sender, UnhandledExceptionEventArgs e)
+        {
+            WriteLine($"Sorry there was a problem and we need to close. Details: {e.ExceptionObject}");
+            //throw new NotImplementedException();
         }
     }
 }
