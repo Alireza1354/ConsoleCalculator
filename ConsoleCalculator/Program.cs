@@ -11,7 +11,7 @@ namespace ConsoleCalculator
             AppDomain currentAppDomain = AppDomain.CurrentDomain;
             // This event will fire when there's an unhandled exception that's been thrown.
             currentAppDomain.UnhandledException += new UnhandledExceptionEventHandler(HandleException);
-            // hold down Ctrl+period and hit Enter to generate this method.
+            // hold down Ctrl+period and hit Enter to generate 'HandleException' method.
 
 
             WriteLine("Enter first number");
