@@ -11,10 +11,14 @@ namespace ConsoleCalculator
 
         public int Calculate(int number1, int number2, string operation)
         {
-        
-            ArgumentNullException.ThrowIfNull(nameof(operation));
+            // Throw ArgumentNullException for demo purposes. Set ParamName property for operation.
+            // throw new ArgumentNullException(nameof(operation)); ---> Operation was not provided.
+            // throw new ArgumentNullException(nameof(number2)); ---> An argument was null.
 
-            if (operation == "/")
+            string nonNullOperation =
+                operation ?? throw new ArgumentNullException(nameof(operation));
+
+            if (nonNullOperation == "/")
             {
                 return Divide(number: number1, divisor: number2);
             }

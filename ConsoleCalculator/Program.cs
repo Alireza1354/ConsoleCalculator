@@ -22,10 +22,15 @@ namespace ConsoleCalculator
                 var result = calculator.Calculate(number1, number2, operation);
                 DisplayResult(result);
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException ex) when (ex.ParamName == nameof(operation))
             {
                 // Log.Error(ex)
                 WriteLine($"Operation was not provided. {ex}");
+            }
+            catch (ArgumentNullException ex)
+            {
+                // Log.Error(ex)
+                WriteLine($"An argument was null. {ex}");
             }
             catch (ArgumentOutOfRangeException ex)
             {
