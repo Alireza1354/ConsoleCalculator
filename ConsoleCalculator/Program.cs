@@ -5,7 +5,7 @@ namespace ConsoleCalculator
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
 
             AppDomain currentAppDomain = AppDomain.CurrentDomain;
@@ -39,13 +39,24 @@ namespace ConsoleCalculator
                 // Log.Error(ex)
                 WriteLine($"An argument was null. {ex}");
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                string suppliedOperation = "Unknown";
+                if (ex.Data.Contains("SUPPLIED_OPERATION"))
+                {
+                    suppliedOperation = (string)ex.Data["SUPPLIED_OPERATION"];
+                }
+
+                WriteLine($"Operation '{operation}' is not supported. {ex}");
+
+            }
             catch (CalculationOperationNotSupportedException ex)
             {
                 // Log.Error(ex)
                 WriteLine($"CalculationOperationNotSupportedException caught '{ex.Operation}'");
                 WriteLine(ex);
             }
-            catch(CalculationException ex) 
+            catch (CalculationException ex)
             {
                 // Log.Error(ex).
                 WriteLine($"CalculationException caught");
