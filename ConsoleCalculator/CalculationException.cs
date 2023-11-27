@@ -28,4 +28,18 @@ public class CalculationException : Exception
     /// <param name="message"></param>
     public CalculationException(string message) : base(message: message) { }
 
+    /// <summary>
+    /// Create a new <see cref="CalculationException"/> with a predefind message and a wrapped inner exception.
+    /// This will be the exception passed into this constructor by user.
+    /// </summary>
+    /// <param name="innerException"></param>
+    public CalculationException(Exception innerException) : base(DefaultMessage, innerException) { }
+
+    /// <summary>
+    /// Create a new <see cref="CalculationException"/> with a user-supplied message and a wrapped innerException.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="innerException"></param>
+    public CalculationException(string message, Exception innerException):base(message: message, innerException) { }
+
 }
