@@ -39,10 +39,17 @@ namespace ConsoleCalculator
                 // Log.Error(ex)
                 WriteLine($"An argument was null. {ex}");
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (CalculationOperationNotSupportedException ex)
             {
                 // Log.Error(ex)
-                WriteLine($"Operation is not supported. {ex}");
+                WriteLine($"CalculationOperationNotSupportedException caught '{ex.Operation}'");
+                WriteLine(ex);
+            }
+            catch(CalculationException ex) 
+            {
+                // Log.Error(ex).
+                WriteLine($"CalculationException caught");
+                WriteLine(ex);
             }
             catch (Exception ex)
             {

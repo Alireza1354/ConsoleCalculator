@@ -20,14 +20,20 @@ namespace ConsoleCalculator
 
             if (nonNullOperation == "/")
             {
-                return Divide(number: number1, divisor: number2);
+                try
+                {
+                    return Divide(number: number1, divisor: number2);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("...logging...");
+                    throw new CalculationException(ex);
+                }
             }
             else
             {
                 throw new
-                    ArgumentOutOfRangeException(
-                    paramName: nameof(operation),
-                    message: "The mathematical operator is not supported.");
+                    CalculationOperationNotSupportedException(operation);
             }
         }
         private int Divide(int number, int divisor) => number / divisor; // Expression body
